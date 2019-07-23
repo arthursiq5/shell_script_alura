@@ -19,7 +19,11 @@ converte_imagem(){
 	done
 }
 
-converte_imagem
-echo $imagem_sem_extensao
-#echo -e "\n\n---\\\\\\---"
-#echo -e "\n\nas imagens selecionadas foram convertidas"
+converte_imagem>erros_conversao.let
+if [ $? -eq 0 ]
+then
+	echo "convertido com sucesso"
+else
+	echo "houve um erro, tente novamente"
+fi
+
