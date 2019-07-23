@@ -1,10 +1,12 @@
 #!/bin/bash
 
-CAMINHO_IMAGENS=~/projetos/shell_script_alura/convertendo_imagens/imagens-livros
+cd ./imagens-livros
 
-for imagem in $@
+for imagem in *.jpg # percorre um vetor com todos os arquivos com extensão '.jpg'
 do
-	convert $CAMINHO_IMAGENS/$imagem.jpg $CAMINHO_IMAGENS/$imagem.png
+	# pegando o nome da imagem sem extensão
+	imagem_sem_extensao=$(ls $imagem | awk -F . '{ print $1 }')
+	convert ./$imagem ./$imagem_sem_extensao.png
 done
 echo -e "\n\n---\\\\\\---"
 echo -e "\n\nas imagens selecionadas foram convertidas"
